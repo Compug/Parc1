@@ -1,0 +1,207 @@
+/*
+el box sizing lo trabajaremos desde el bord
+todo el contenido lo trabajara desde el bording z empieza en 0
+lo de resto lo modificare yo.
+
+*/
+
+
+
+/* ACA VIVE TODO EL DISENO DE LA PAGINA ------*/
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap');
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0; 
+}
+
+body{ /*min 37:51 video - explicacion how to add a font*/
+
+    font-family: 'ZCOOL QingKe HuangYou', cursive;   
+    
+    width: 100vw;
+    height: 100vh;
+
+
+}
+
+/*to hide the data on the custom buttom*/
+/* hide the enviar buttom con display none*/
+
+/* body #customBtn {
+    display: none;
+} */
+body #sendData {
+    display: none;
+}
+/*body #customInput {
+    display: none;
+}*/
+
+/* to hide the back btn when opened*/
+body #backBtn{ /* btn for the return - below is the way using 1 on z-index to just show it on render one 
+    when is open any window and not at the start */
+    border-radius: 15px;
+    padding: 15px;
+   
+    color: rgb(22, 174, 250);
+    display: flex;
+   
+    cursor: pointer;
+  
+} 
+
+/*body #sceneSize {
+    display: none;
+}*/  /*Deleted at minute 49:52*/
+
+body #renderScene {
+    display:flex; 
+    position: fixed;
+    /*z-index: 3;*/    /* En este punto esto se hace para poder quitar options de 
+                    cuando se devuelve en la pagina
+                    y paara qutar el boton de volver solo deberiamos cambiarle el index al devolverse
+                    en este caso 1*/
+    padding: 15px;
+    color: white; /* Cambiar el color under return */
+    flex-flow: row; /* What flex flow is doing is organizing in columns starting from one. in this case below return BTN */
+    
+    z-index: 1; /* Al poner el index en 1 y rendeziar la scena primero QUE LO DEMAS desaparecen tanto controles a la devuelta y el boton VOLVER
+    */
+
+}
+
+body #renderScene #createCubeBtn{ /* se llama la funcion en cada boton posterior el render
+    debido a que no debera aparecer en la primera pagina sino despues del primer render */
+    border: 3px solid #edf0f1;
+    width: 14vw; 
+    height: 5vh;
+    margin: 2vw 0;
+    border-radius: 15px;
+    padding: 15px;
+    color: white;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.4s case ease-in-out;
+
+}
+body #renderScene #createSphereBtn{ /* Min 34;20 or before for creation  */
+    border: 3px solid #edf0f1;
+    width: 14vw; 
+    height: 5vh;
+    margin: 2vw 0;
+    border-radius: 15px;
+    padding: 15px;
+    color: white;
+    display: flex; /* */
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.4s case ease-in-out;
+
+}
+body #renderScene #createLightBtn {
+    border: 3px solid #edf0f1;
+    width: 14vw; 
+    height: 5vh;
+    margin: 2vw 0;
+    border-radius: 15px;
+    padding: 15px;
+    color: white;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.4s case ease-in-out;
+
+}
+body #renderScene #createSpotLightBtn {
+    border: 3px solid #edf0f1;
+    width: 14vw; 
+    height: 5vh;
+    margin: 2vw 0;
+    border-radius: 15px;
+    padding: 15px;
+    color: white;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.4s case ease-in-out;
+
+}
+body #renderScene #createAmbientLightBtn {
+    border: 3px solid #edf0f1;
+    width: 14vw; 
+    height: 5vh;
+    margin: 2vw 0;
+    border-radius: 15px;
+    padding: 15px;
+    color: white;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.4s case ease-in-out;
+
+}
+
+
+body #content {
+    display:flex;
+    position: fixed;
+    background: #428185;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+   
+}
+body #content .btnOption{
+    border: 5px solid #edf0f1;
+    width: 15vw; 
+    height: 20yh;
+    margin: 2vw;
+    border-radius: 15px;
+    padding: 15px;
+    color: white;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.4s case ease-in-out;
+
+
+}
+body #content .btnOption:hover{ /*para que los botones aumenten de tamano en el momento que se selecciona o se posiciona el mouse encim.
+*/
+    width: 20vw;
+
+}
+body #content .btnOption .title{ 
+    font-size: 180%;
+    margin-bottom: 2px;
+
+}
+.small{
+    background: #3498db;
+}
+.medium{
+    background: #24cc71;
+}
+.big{
+    background: turquoise;
+}
+.custom{
+    background: tomato;
+}

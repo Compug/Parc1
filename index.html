@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcial1 - Cod: 51831 - 1146029 </title>
+  
+    <script type="module" src="./src/app.js"></script>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+
+<div id="renderScene">
+  <div id="backBtn">Return</div>
+  <div id="createCubeBtn">Create Cube</div> <!-- create the create cube botton
+  edit it in the style.css that is where all the design of all the pages is done
+ -->
+
+<!--  FROM HERE PARCIAL -->
+ <div id="createSphereBtn">Create Sphere</div> <!-- for the other two btnss -->
+ <div id="createLightBtn">Point Light</div>
+ <div id="createSpotLightBtn">Spot Light</div>
+ <div id="createAmbientLightBtn">Ambient Light</div>
+</div>
+ 
+    <div id="content">
+      <div class="btnOption small" data-size="10">
+        <div class="title">Small</div>
+        <span>10x10</span>
+      </div>
+      <div class="btnOption medium" data-size="20">
+        <div class="title">Medium</div>
+        <span>20x20</span>
+      </div>
+      <div class="btnOption big" data-size="40">
+        <div class="title">Big</div>
+        <span>40x40</span>
+       
+        
+      </div>
+      <div class="btnOption custom" data-size="60">   <!-- // FOR THE CUSTOM BUTTOM QUESTION ON HOW TO CALL A VARIABLE TO PUT AT THE TIME OF THE CREATION OF THE --> 
+                                                     <!-- // CUSTOM BTN -->
+        <div class="title">Custom</div>
+        <span>?x?</span>
+         <div id="customBtn">
+          <input type="text" name="" id="customInput">
+          <div id="sendData"><span>Enviar</span></div>
+        </div>
+      </div>
+      <script type ="module">
+        import { main, reset, cleanGUI, createCubeGeneric/*creacion del cubo y exportacion min 37:06*/, createSphereGeneric,createLightGeneric, createSpotLightGeneric, createAmbientLightGeneric } from './src/app.js';
+
+        const options = document.querySelectorAll('.btnOption');
+        const constent =  document.querySelector('#content'); // yendo a buscar en el html el contenido
+        const backBtn = document.querySelector('#backBtn');
+        const createCubeBtn = document.querySelector('#createCubeBtn'); //aca llamaremos el boton o los botones creado o los botones creados anteriormente min 35:22
+        const createSphereBtn = document.querySelector('#createSphereBtn');                                                
+        const createLightBtn = document.querySelector('#createLightBtn');
+        const createSpotLightBtn = document.querySelector('#createSpotLightBtn');
+        const createAmbientLightBtn = document.querySelector('#createAmbientLightBtn');
+        //deberiamos llamar cada uno despues de haberlos creado anteriormente arriba y de haberlos editado su apariencia en el css
+      /*   const createSphereBtn = document.querySelector('#createSphereBtn');    
+        const backBtn = document.querySelector('#createLightBtn');   */                                                            
+        let size = 10;
+      
+        options.forEach(optionSelected => { //*ends at 46:44 min last video*/
+          optionSelected.onclick = function(){
+            const optionSize = this.dataset.size;
+            size = optionSize;
+            
+            //const sceneSize = document.querySelector('#sceneSize')
+            /*aqui ya tenemos listo 
+            el tamano de lo que nos esta diciendo
+            referenciando scene size y lo estamos buscand -> ya tenemos el tamano y
+            y ademas ya tenemos el scene size listo */
+            //sceneSize.innerHTML =  size;
+
+            // CHECK MINUTO 49:02 For body on the top was deleted and changed the values of the boxes
+            //at this point they were no showed anymore because it was just a DEMO.
+
+
+            //gotta hide button before the call  because sino nos jode
+            
+            //content.style.display = "none"; // HORA 1:03:50
+                                            // Explanation All On 1:05:00
+            
+            
+            
+            
+           toogleContent ();  // hora 1:27:25;
+
+          
+
+            
+            main (size);
+
+
+
+          }
+          
+        });
+
+        backBtn.onclick = function (){
+            toogleContent ();    // Se crea la funcion close content en el app.js pero como es de manera modular
+                                // entonces es posible hacer el llamado en el main,usando el export
+                                // haciendolo de manera desestructurada
+                               
+          reset();/// AHORA DEBEMOS LLAMAR LA FUNCION RESET despues de ubicarla en el main arriba, despues de haber llamado el main
+                    //al llamar la funcion reset deberia reset cada vesque se devuelva
+          cleanGUI(); // Any time the return btn is pressed then the gui is gonna be cleaned
+
+          
+        }
+        createCubeBtn.onclick = function(){ ///aca deberiamos duplicarlopara ahora llamar la funcion crear cubo min 35:42
+
+          // console.log('Se ha creado el cubo satisfactoriamente x'); //esto se hace para probar que la funcion esta funcionando correctamente
+          createCubeGeneric();                                 //se elimina luego solo es de prueba
+                                                //ahora ya podria pasar al app.js para DE MANERA MODULAR PASR LOS DATOS 
+                                                //USANDO LA FUNCION EXPORT
+        }
+        createSphereBtn.onclick = function(){ ///aca deberiamos duplicarlopara ahora llamar la funcion crear cubo min 35:42
+          //console.log('Se ha creado la sphera');
+          createSphereGeneric();                                                               
+        }
+        createLightBtn.onclick = function(){ ///aca deberiamos duplicarlopara ahora llamar la funcion crear cubo min 35:42
+          //console.log('Se ha creado la sphera');
+          createLightGeneric();                                                               
+        }
+
+        createSpotLightBtn.onclick = function(){ ///aca deberiamos duplicarlopara ahora llamar la funcion crear cubo min 35:42
+          //console.log('Se ha creado la sphera');
+          createSpotLightGeneric();                                                               
+        }
+        createAmbientLightBtn.onclick = function(){ ///aca deberiamos duplicarlopara ahora llamar la funcion crear cubo min 35:42
+          //console.log('Se ha creado la sphera');
+          createAmbientLightGeneric();                                                               
+        }
+ 
+        function toogleContent (){
+          content.style.display = content.style.display  == 'none' ? 'flex' : 'none';
+
+        }
+
+      </script>
+    </div>
+
+  
+   
+</body>
+
+</html>
